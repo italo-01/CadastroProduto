@@ -10,12 +10,12 @@ public class Main {
 
         System.out.println("-".repeat(30));
         System.out.println(Caixa.centralizar("CAIXA ELETRONICO", 30));
-        System.out.println("-".repeat(30));
 
         System.out.println("Saldo atual R$: " + caixa.getSaldo());
         System.out.print("Deposite um valor para começar: ");
         double depositar = user.nextDouble();
         caixa.depositar(depositar);
+        caixa.extrato("Deposito de R$: %.2f", depositar);
 
         while (true){
             System.out.println("-".repeat(30));
@@ -36,6 +36,7 @@ public class Main {
                         double valorsaque = user.nextDouble();
                         String saque = caixa.sacar(valorsaque);
                         System.out.println(saque);
+                        caixa.extrato("saque de R$: %.2f", valorsaque);
                         break;
 
                     case 2:
@@ -43,13 +44,21 @@ public class Main {
                         double deposito = user.nextDouble();
                         String valordeposito = caixa.depositar(deposito);
                         System.out.println(valordeposito);
+                        caixa.extrato("Deposito de R$: %.2f", deposito);
                         break;
 
                     case 3:
+                        System.out.println("-".repeat(30));
                         System.out.println("Consultando saldo....");
                         System.out.println(String.format("Saldo atual R$: %.2f", caixa.getSaldo()));
                         break;
 
+                    case 4:
+                        System.out.println("-".repeat(30));
+                        System.out.println("Consultando Extrato...");
+                        for(String item : caixa.getTransacoes()) {
+                            System.out.println(item);
+                        }
                     case 5:
 
                 }

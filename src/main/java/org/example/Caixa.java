@@ -7,7 +7,7 @@ public class Caixa {
     private double sacar;
     private double depositar;
     private double saldo;
-    ArrayList<String> transacoes = new ArrayList<>();
+    private ArrayList<String> transacoes = new ArrayList<>();
 
     //Constrtutor
     public Caixa(double saldo){
@@ -39,7 +39,9 @@ public class Caixa {
     }
 
     public ArrayList<String> extrato(String msg, double valor){
-        return null;
+        this.transacoes.add(String.format(msg, valor));
+
+        return transacoes;
     }
 
     //Metodos especiais
@@ -66,4 +68,13 @@ public class Caixa {
     public void setSacar(double sacar) {
         this.sacar = sacar;
     }
+
+    public ArrayList<String> getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(ArrayList<String> transacoes) {
+        this.transacoes = transacoes;
+    }
+
 }
